@@ -100,7 +100,7 @@ export async function loginUser(req, res) {
       const providerId = payload.sub;
 
       // Try to find existing Google user
-      user = await db.User.findFirst({
+      user = await prisma.user.findFirst({
         where: { providerId: String(providerId) },
       });
 
@@ -122,7 +122,7 @@ export async function loginUser(req, res) {
       return res.status(400).json({ message: "Email and password required." });
     }
 
-    user = await db.User.findOne({ where: { email } });
+    user = await prisma.user.findUnique({ where: { email } });
 
     if (!user) {
       return res.status(404).json({ message: "User not found." });
@@ -149,34 +149,6 @@ export async function loginUser(req, res) {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 }
-
-// export const loginUser = async (req, res) => {
-//   try {
-//     const { email, password } = req.body;
-
-//     const user = await prisma.user.findUnique({
-//       where: { email: String(email) },
-//     });
-//     if (!user) {
-//       return res.status(404).json({ message: "no user found" });
-//     }
-
-//     const isMatch = await bcrypt.compare(password, user.password);
-//     if (isMatch) {
-//       createJwt(res, user.id);
-//       user.password = undefined;
-//       res
-//         .status(200)
-//         .json({ user, message: "You've been successfully logged in" });
-//     } else {
-//       return res.status(500).json({
-//         message: "email or password is not correct! input the correct info",
-//       });
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
 
 export const logoutUser = async (req, res) => {
   try {

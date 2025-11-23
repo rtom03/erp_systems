@@ -99,19 +99,22 @@ export function LoginForm({
                   onSuccess={async (credentialResponse) => {
                     try {
                       const decoded = jwtDecode(credentialResponse.credential);
+                      const idToken = credentialResponse.credential;
                       console.log(decoded);
-
                       const res = await fetch(`${BASE_URL}/user/sign-in`, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                           email: decoded.email,
                           name: decoded.name,
+                          provider: "google",
+                          idToken,
                         }),
                       });
 
                       const data = await res.json(); // parse JSON from backend
-                      dispatch(data); // now dispatch the actual response
+                      dispatch(login(data)); // now dispatch the actual response
+                      navigate("/");
                     } catch (err) {
                       console.error("Login failed:", err);
                     }

@@ -118,7 +118,6 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
                       const decoded = jwtDecode(idToken);
 
                       console.log("Decoded:", decoded);
-
                       const response = await fetch(`${BASE_URL}/user/sign-up`, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
