@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { InputGroupDropdown } from "./SearchQuery";
 import DropdownTab from "./DropdownTab";
+import SearchDropdown from "./SearchDropdown";
 
 const PurchaseHeader = () => {
   return (
@@ -39,7 +40,7 @@ const PurchaseHeader = () => {
           <h3 className="text-2xl">Request for quotation</h3>
         </div>
         <div className="left-0">
-          <InputGroupDropdown />
+          <SearchDropdown />
         </div>
       </div>
     </div>
