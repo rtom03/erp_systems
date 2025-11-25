@@ -8,14 +8,14 @@ const SearchDropdown = () => {
     const handleOutsideClick = (e) => {
       if (ref.current && !ref.current.contains(e.target)) {
         setOpen(false);
-      }
+      }  
     };
     window.addEventListener("click", handleOutsideClick);
     return () => window.removeEventListener("click", handleOutsideClick);
   }, []);
   return (
-    <div ref={ref}>
-      <Input placeholder="Enter search query" className="outline-none" />
+    <div ref={ref} className="w-full">
+         <Input placeholder="Enter search query" className="outline-none" />
     </div>
   );
 };

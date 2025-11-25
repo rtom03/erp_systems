@@ -1,13 +1,14 @@
 import React from "react";
+import DashboardStats from "./DashboardStats";
 
 const Inventory = () => {
   return (
-    <div>
+    <div className="">
       <div>
         <h2>Inventory</h2>
-        <ul>
-          <li></li>
-        </ul>
+        <div>
+          <DashboardStats />
+        </div>
       </div>
     </div>
   );

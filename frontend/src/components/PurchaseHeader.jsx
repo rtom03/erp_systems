@@ -6,10 +6,10 @@ import SearchDropdown from "./SearchDropdown";
 
 const PurchaseHeader = () => {
   return (
-    <div className="fixed w-full ">
-      <div className="flex items-center ">
+    <div className="flex flex-col">
+      <div className="flex items-center gap-2.5">
         <h2 className="text-2xl">Purchase</h2>
-        <div className="flex items-center gap-1.5 ">
+        <div className="flex items-center gap-1.5 w-full ">
           <DropdownTab
             label="Orders"
             items={[
@@ -26,20 +26,13 @@ const PurchaseHeader = () => {
             label="Reporting"
             items={[{ name: "Purchase", link: "/purchase" }]}
           />
-          {/* <DropdownTab
-            label="Configuration"
-            items={["Requests for Quotation", "Purchase Orders", "Vendors"]}
-          /> */}
         </div>
       </div>
-      <br />
-      <div className="flex gap-72 left-0">
-        <div className="flex items-center gap-2.5">
+      <div className="flex gap-72 left-0 mt-5">
+        <div className="flex items-center gap-2.5 w-[600px]">
           <Button variant="purple">New</Button>
           <Button variant="outline">Upload</Button>
-          <h3 className="text-2xl">Request for quotation</h3>
-        </div>
-        <div className="left-0">
+          <p className="w-full">Requests for Quotation</p>
           <SearchDropdown />
         </div>
       </div>

@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Purchase from "./components/Purchase";
 import Inventory from "./components/Inventory";
 import Rfq from "./components/Rfq";
+import TopBar from "./components/TopBar";
 
 const ProtectedRoute = ({ user, children }) => {
   if (!user.user) return <Navigate to="/login" replace />;
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <div className="h-screen bg-white text-black dark:bg-gray-900 dark:text-white ml-12 ">
-      <Header />
+      <TopBar />
       <Routes>
         <Route
           path="/"
